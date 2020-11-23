@@ -27,15 +27,15 @@ describe("Test Application Login Fuctionality", () => {
         assert('Password is required', PageObjects.EmptyPasswordFieldError.getText())
     })
     it("Attempt to login user with invalid email and correct password", () => {
-            browser.url('/')
-            PageObjects.getNavLinks(2).click()
-            PageObjects.enterEmail(loginData.invalidEmail)
-            PageObjects.enterPassword(loginData.password)
-            PageObjects.LoginButton.click()
-            PageObjects.ErrorMessage.waitForDisplayed()
-            assert('Please check your login details and try again.', PageObjects.ErrorMessageText.getText())
+        browser.url('/')
+        PageObjects.getNavLinks(2).click()
+        PageObjects.enterEmail(loginData.invalidEmail)
+        PageObjects.enterPassword(loginData.password)
+        PageObjects.LoginButton.click()
+        PageObjects.ErrorMessage.waitForDisplayed()
+        assert('Please check your login details and try again.', PageObjects.ErrorMessageText.getText())
     })
-        it("Attempt to login user with correct email and correct password", () => {
+    it("Attempt to login user with correct email and correct password", () => {
         browser.url('/')
         PageObjects.getNavLinks(2).click()
         PageObjects.enterEmail(loginData.email)
