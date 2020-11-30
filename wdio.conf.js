@@ -1,3 +1,14 @@
+const url = require('./url')
+
+const ENV = process.env.ENV
+
+if(!ENV || !['PRD', 'DEV'].includes(ENV)){
+    console.log("Please add a ENV varibale to the script")
+    process.exit()
+}
+
+
+
 exports.config = {
     //
     // ====================
@@ -90,7 +101,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'https://qw-test-store-prod.netlify.app/',
+    baseUrl: url[process.env.ENV],
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -128,7 +139,12 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: ['spec'],
+    reporters: [
+        'spec',
+        ['mochawesome',{
+            outputDir: './Results'
+        }]
+      ],
 
 
     
