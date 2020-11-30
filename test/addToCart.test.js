@@ -1,7 +1,6 @@
 const PageObjects = require('../pageObjects/pageObjects.page')
 loginData = require('../data/data.file')
 var assert = require('assert')
-var expect = require('expect')
 
 describe("Testing Adding Items To Cart Functionality", () => {
     it("Should add a single product to cart with user not signed in", () => {
